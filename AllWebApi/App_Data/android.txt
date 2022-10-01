@@ -1,0 +1,24 @@
+
+edit text placeholder : 
+android:hint="Number 1"
+n1 = Float.parseFloat(e1.getText().toString());
+t1.setText(Float.toString(r));
+
+list view :
+ArrayList<String> sList = new ArrayList<>();
+ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,sList);
+lv.setAdapter(adapter);
+adapter.add(name+" | "+age);
+
+int id = rg.getCheckedRadioButtonId();
+RadioButton rb = (RadioButton) findViewById(id);
+intent.putExtra("gender",rb.getText().toString());
+startActivity(intent);
+Intent intent = getIntent();
+t1.setText(intent.getStringExtra("name"));
+
+
+fragment and passing data to another fragment
+capture video
+playing video (audio-video)
+wifi

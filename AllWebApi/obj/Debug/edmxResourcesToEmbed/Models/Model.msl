@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CombineApiModelStoreContainer" CdmEntityContainer="CombineApiEntities">
+    <EntitySetMapping Name="empDatas">
+      <EntityTypeMapping TypeName="CombineApiModel.empData">
+        <MappingFragment StoreEntitySet="empData">
+          <ScalarProperty Name="emp_id" ColumnName="emp_id" />
+          <ScalarProperty Name="emp_name" ColumnName="emp_name" />
+          <ScalarProperty Name="emp_mo_no" ColumnName="emp_mo_no" />
+          <ScalarProperty Name="emp_city" ColumnName="emp_city" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Patients">
+      <EntityTypeMapping TypeName="CombineApiModel.Patient">
+        <MappingFragment StoreEntitySet="Patient">
+          <ScalarProperty Name="Pat_Id" ColumnName="Pat_Id" />
+          <ScalarProperty Name="Pat_Name" ColumnName="Pat_Name" />
+          <ScalarProperty Name="Pat_Age" ColumnName="Pat_Age" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Practice_Student">
+      <EntityTypeMapping TypeName="CombineApiModel.Practice_Student">
+        <MappingFragment StoreEntitySet="Practice_Student">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="sem" ColumnName="sem" />
+          <ScalarProperty Name="cpi" ColumnName="cpi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="purchases">
+      <EntityTypeMapping TypeName="CombineApiModel.purchase">
+        <MappingFragment StoreEntitySet="purchase">
+          <ScalarProperty Name="pur_id" ColumnName="pur_id" />
+          <ScalarProperty Name="pur_no" ColumnName="pur_no" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="total_amount" ColumnName="total_amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="purchase_product">
+      <EntityTypeMapping TypeName="CombineApiModel.purchase_product">
+        <MappingFragment StoreEntitySet="purchase_product">
+          <ScalarProperty Name="pur_pro_id" ColumnName="pur_pro_id" />
+          <ScalarProperty Name="pur_id" ColumnName="pur_id" />
+          <ScalarProperty Name="item" ColumnName="item" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="registrations">
+      <EntityTypeMapping TypeName="CombineApiModel.registration">
+        <MappingFragment StoreEntitySet="registration">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Mobile_No" ColumnName="Mobile_No" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AllFiles">
+      <EntityTypeMapping TypeName="CombineApiModel.AllFile">
+        <MappingFragment StoreEntitySet="AllFile">
+          <ScalarProperty Name="File_Path" ColumnName="File_Path" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DocPats">
+      <EntityTypeMapping TypeName="CombineApiModel.DocPat">
+        <MappingFragment StoreEntitySet="DocPat">
+          <ScalarProperty Name="Doc_Name" ColumnName="Doc_Name" />
+          <ScalarProperty Name="Pat_Name" ColumnName="Pat_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Images">
+      <EntityTypeMapping TypeName="CombineApiModel.Image">
+        <MappingFragment StoreEntitySet="Image">
+          <ScalarProperty Name="Image1" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

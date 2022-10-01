@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CombineApiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CombineApi.dbo.AllFile' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AllFile">
+    <Key>
+      <PropertyRef Name="File_Path" />
+    </Key>
+    <Property Name="File_Path" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CombineApi.dbo.DocPat' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DocPat">
+    <Key>
+      <PropertyRef Name="Doc_Name" />
+      <PropertyRef Name="Pat_Name" />
+    </Key>
+    <Property Name="Doc_Name" Type="text" Nullable="false" />
+    <Property Name="Pat_Name" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="empData">
+    <Key>
+      <PropertyRef Name="emp_id" />
+    </Key>
+    <Property Name="emp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="emp_name" Type="varchar(max)" Nullable="false" />
+    <Property Name="emp_mo_no" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="emp_city" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CombineApi.dbo.Image' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Image">
+    <Key>
+      <PropertyRef Name="Image" />
+    </Key>
+    <Property Name="Image" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Patient">
+    <Key>
+      <PropertyRef Name="Pat_Id" />
+    </Key>
+    <Property Name="Pat_Id" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Pat_Name" Type="text" Nullable="false" />
+    <Property Name="Pat_Age" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Practice_Student">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="name" Type="text" Nullable="false" />
+    <Property Name="sem" Type="text" Nullable="false" />
+    <Property Name="cpi" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="purchase">
+    <Key>
+      <PropertyRef Name="pur_id" />
+    </Key>
+    <Property Name="pur_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pur_no" Type="varchar(max)" Nullable="false" />
+    <Property Name="date" Type="datetime" Nullable="false" />
+    <Property Name="total_amount" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="purchase_product">
+    <Key>
+      <PropertyRef Name="pur_pro_id" />
+    </Key>
+    <Property Name="pur_pro_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pur_id" Type="int" Nullable="false" />
+    <Property Name="item" Type="varchar(max)" Nullable="false" />
+    <Property Name="qty" Type="int" Nullable="false" />
+    <Property Name="amount" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="registration">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Password" Type="nchar" MaxLength="12" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="15" Nullable="false" />
+    <Property Name="Mobile_No" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Email" Type="nchar" MaxLength="30" />
+  </EntityType>
+  <EntityContainer Name="CombineApiModelStoreContainer">
+    <EntitySet Name="empData" EntityType="Self.empData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Practice_Student" EntityType="Self.Practice_Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="purchase" EntityType="Self.purchase" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="purchase_product" EntityType="Self.purchase_product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="registration" EntityType="Self.registration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AllFile" EntityType="Self.AllFile" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AllFile].[File_Path] AS [File_Path]
+    FROM [dbo].[AllFile] AS [AllFile]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DocPat" EntityType="Self.DocPat" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DocPat].[Doc_Name] AS [Doc_Name], 
+    [DocPat].[Pat_Name] AS [Pat_Name]
+    FROM [dbo].[DocPat] AS [DocPat]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Image" EntityType="Self.Image" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Image].[Image] AS [Image]
+    FROM [dbo].[Image] AS [Image]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

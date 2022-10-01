@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CombineApiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="empData">
+    <Key>
+      <PropertyRef Name="emp_id" />
+    </Key>
+    <Property Name="emp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="emp_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="emp_mo_no" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="emp_city" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Patient">
+    <Key>
+      <PropertyRef Name="Pat_Id" />
+    </Key>
+    <Property Name="Pat_Id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Pat_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pat_Age" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Practice_Student">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="sem" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cpi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="purchase">
+    <Key>
+      <PropertyRef Name="pur_id" />
+    </Key>
+    <Property Name="pur_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pur_no" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="total_amount" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="purchase_product">
+    <Key>
+      <PropertyRef Name="pur_pro_id" />
+    </Key>
+    <Property Name="pur_pro_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pur_id" Type="Int32" Nullable="false" />
+    <Property Name="item" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="qty" Type="Int32" Nullable="false" />
+    <Property Name="amount" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="registration">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="12" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Mobile_No" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AllFile">
+    <Key>
+      <PropertyRef Name="File_Path" />
+    </Key>
+    <Property Name="File_Path" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DocPat">
+    <Key>
+      <PropertyRef Name="Doc_Name" />
+      <PropertyRef Name="Pat_Name" />
+    </Key>
+    <Property Name="Doc_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pat_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Image">
+    <Key>
+      <PropertyRef Name="Image1" />
+    </Key>
+    <Property Name="Image1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="CombineApiEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="empDatas" EntityType="Self.empData" />
+    <EntitySet Name="Patients" EntityType="Self.Patient" />
+    <EntitySet Name="Practice_Student" EntityType="Self.Practice_Student" />
+    <EntitySet Name="purchases" EntityType="Self.purchase" />
+    <EntitySet Name="purchase_product" EntityType="Self.purchase_product" />
+    <EntitySet Name="registrations" EntityType="Self.registration" />
+    <EntitySet Name="AllFiles" EntityType="Self.AllFile" />
+    <EntitySet Name="DocPats" EntityType="Self.DocPat" />
+    <EntitySet Name="Images" EntityType="Self.Image" />
+  </EntityContainer>
+</Schema>

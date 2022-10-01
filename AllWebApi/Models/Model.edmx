@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CombineApiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CombineApi.dbo.AllFile' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AllFile">
+          <Key>
+            <PropertyRef Name="File_Path" />
+          </Key>
+          <Property Name="File_Path" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CombineApi.dbo.DocPat' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DocPat">
+          <Key>
+            <PropertyRef Name="Doc_Name" />
+            <PropertyRef Name="Pat_Name" />
+          </Key>
+          <Property Name="Doc_Name" Type="text" Nullable="false" />
+          <Property Name="Pat_Name" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="empData">
+          <Key>
+            <PropertyRef Name="emp_id" />
+          </Key>
+          <Property Name="emp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="emp_name" Type="varchar(max)" Nullable="false" />
+          <Property Name="emp_mo_no" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="emp_city" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CombineApi.dbo.Image' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Image" />
+          </Key>
+          <Property Name="Image" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="Pat_Id" />
+          </Key>
+          <Property Name="Pat_Id" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Pat_Name" Type="text" Nullable="false" />
+          <Property Name="Pat_Age" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Practice_Student">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="name" Type="text" Nullable="false" />
+          <Property Name="sem" Type="text" Nullable="false" />
+          <Property Name="cpi" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="purchase">
+          <Key>
+            <PropertyRef Name="pur_id" />
+          </Key>
+          <Property Name="pur_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pur_no" Type="varchar(max)" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="total_amount" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="purchase_product">
+          <Key>
+            <PropertyRef Name="pur_pro_id" />
+          </Key>
+          <Property Name="pur_pro_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pur_id" Type="int" Nullable="false" />
+          <Property Name="item" Type="varchar(max)" Nullable="false" />
+          <Property Name="qty" Type="int" Nullable="false" />
+          <Property Name="amount" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="registration">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Password" Type="nchar" MaxLength="12" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="Mobile_No" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Email" Type="nchar" MaxLength="30" />
+        </EntityType>
+        <EntityContainer Name="CombineApiModelStoreContainer">
+          <EntitySet Name="empData" EntityType="Self.empData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Practice_Student" EntityType="Self.Practice_Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="purchase" EntityType="Self.purchase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="purchase_product" EntityType="Self.purchase_product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="registration" EntityType="Self.registration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AllFile" EntityType="Self.AllFile" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AllFile].[File_Path] AS [File_Path]
+    FROM [dbo].[AllFile] AS [AllFile]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DocPat" EntityType="Self.DocPat" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DocPat].[Doc_Name] AS [Doc_Name], 
+    [DocPat].[Pat_Name] AS [Pat_Name]
+    FROM [dbo].[DocPat] AS [DocPat]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Image" EntityType="Self.Image" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Image].[Image] AS [Image]
+    FROM [dbo].[Image] AS [Image]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CombineApiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="empData">
+          <Key>
+            <PropertyRef Name="emp_id" />
+          </Key>
+          <Property Name="emp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="emp_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="emp_mo_no" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="emp_city" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="Pat_Id" />
+          </Key>
+          <Property Name="Pat_Id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Pat_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pat_Age" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Practice_Student">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sem" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cpi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="purchase">
+          <Key>
+            <PropertyRef Name="pur_id" />
+          </Key>
+          <Property Name="pur_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pur_no" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="total_amount" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="purchase_product">
+          <Key>
+            <PropertyRef Name="pur_pro_id" />
+          </Key>
+          <Property Name="pur_pro_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pur_id" Type="Int32" Nullable="false" />
+          <Property Name="item" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="qty" Type="Int32" Nullable="false" />
+          <Property Name="amount" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="registration">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="12" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Mobile_No" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AllFile">
+          <Key>
+            <PropertyRef Name="File_Path" />
+          </Key>
+          <Property Name="File_Path" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DocPat">
+          <Key>
+            <PropertyRef Name="Doc_Name" />
+            <PropertyRef Name="Pat_Name" />
+          </Key>
+          <Property Name="Doc_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pat_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Image1" />
+          </Key>
+          <Property Name="Image1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="CombineApiEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="empDatas" EntityType="Self.empData" />
+          <EntitySet Name="Patients" EntityType="Self.Patient" />
+          <EntitySet Name="Practice_Student" EntityType="Self.Practice_Student" />
+          <EntitySet Name="purchases" EntityType="Self.purchase" />
+          <EntitySet Name="purchase_product" EntityType="Self.purchase_product" />
+          <EntitySet Name="registrations" EntityType="Self.registration" />
+          <EntitySet Name="AllFiles" EntityType="Self.AllFile" />
+          <EntitySet Name="DocPats" EntityType="Self.DocPat" />
+          <EntitySet Name="Images" EntityType="Self.Image" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CombineApiModelStoreContainer" CdmEntityContainer="CombineApiEntities">
+          <EntitySetMapping Name="empDatas">
+            <EntityTypeMapping TypeName="CombineApiModel.empData">
+              <MappingFragment StoreEntitySet="empData">
+                <ScalarProperty Name="emp_id" ColumnName="emp_id" />
+                <ScalarProperty Name="emp_name" ColumnName="emp_name" />
+                <ScalarProperty Name="emp_mo_no" ColumnName="emp_mo_no" />
+                <ScalarProperty Name="emp_city" ColumnName="emp_city" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patients">
+            <EntityTypeMapping TypeName="CombineApiModel.Patient">
+              <MappingFragment StoreEntitySet="Patient">
+                <ScalarProperty Name="Pat_Id" ColumnName="Pat_Id" />
+                <ScalarProperty Name="Pat_Name" ColumnName="Pat_Name" />
+                <ScalarProperty Name="Pat_Age" ColumnName="Pat_Age" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Practice_Student">
+            <EntityTypeMapping TypeName="CombineApiModel.Practice_Student">
+              <MappingFragment StoreEntitySet="Practice_Student">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="sem" ColumnName="sem" />
+                <ScalarProperty Name="cpi" ColumnName="cpi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="purchases">
+            <EntityTypeMapping TypeName="CombineApiModel.purchase">
+              <MappingFragment StoreEntitySet="purchase">
+                <ScalarProperty Name="pur_id" ColumnName="pur_id" />
+                <ScalarProperty Name="pur_no" ColumnName="pur_no" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="total_amount" ColumnName="total_amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="purchase_product">
+            <EntityTypeMapping TypeName="CombineApiModel.purchase_product">
+              <MappingFragment StoreEntitySet="purchase_product">
+                <ScalarProperty Name="pur_pro_id" ColumnName="pur_pro_id" />
+                <ScalarProperty Name="pur_id" ColumnName="pur_id" />
+                <ScalarProperty Name="item" ColumnName="item" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="registrations">
+            <EntityTypeMapping TypeName="CombineApiModel.registration">
+              <MappingFragment StoreEntitySet="registration">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Mobile_No" ColumnName="Mobile_No" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AllFiles">
+            <EntityTypeMapping TypeName="CombineApiModel.AllFile">
+              <MappingFragment StoreEntitySet="AllFile">
+                <ScalarProperty Name="File_Path" ColumnName="File_Path" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocPats">
+            <EntityTypeMapping TypeName="CombineApiModel.DocPat">
+              <MappingFragment StoreEntitySet="DocPat">
+                <ScalarProperty Name="Doc_Name" ColumnName="Doc_Name" />
+                <ScalarProperty Name="Pat_Name" ColumnName="Pat_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="CombineApiModel.Image">
+              <MappingFragment StoreEntitySet="Image">
+                <ScalarProperty Name="Image1" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
